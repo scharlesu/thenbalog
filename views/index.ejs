@@ -1,0 +1,15 @@
+<% data?.forEach(player => { %>
+
+<div style="border: solid 1px">
+  <h3><%= player[0].name%></h3>
+  <a href="/<%= player[0].name %>">
+    <div>
+      <img style="border-radius: 8%; border: solid; width: 100px"
+      src="https://www.basketball-reference.com/req/202106291/images/headshots/<%=
+      (player[0].name.split(" ")[1].slice(0, 5) + player[0].name.slice(0,
+      2)).toLowerCase() %>01.jpg" alt="<%= player[0].name%>" />
+    </div>
+  </a>
+</div>
+
+<%}) %>

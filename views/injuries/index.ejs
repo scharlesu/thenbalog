@@ -1,0 +1,32 @@
+<div>
+  <h2>Games of <%= scoreboardData.day.date %></h2>
+  <% scoreboardData.events.forEach(game => { %>
+  <div style="background-color: blue; color: white; text-align: center">
+    <h3><%= game.shortName %></h3>
+  </div>
+  <div style="display: flex; text-align: center; justify-content: center">
+    <% injuryData.teams.forEach(team => { %>
+    <%if(game.name.includes(team.team_name)) {%>
+    <div style="padding: 1rem">
+      <h3><%= team.team_name %></h3>
+      <table style="border: solid" id="<%= team.team_name %>">
+        <tr>
+          <th style="border: 1px solid black">Name</th>
+          <th style="border: 1px solid black">Injury</th>
+          <th style="border: 1px solid black">Status</th>
+          <th style="border: 1px solid black">Date</th>
+        </tr>
+        <% team.players.forEach(player => { %>
+        <tr>
+          <td style="border: 1px solid black"><%= player.name %></td>
+          <td style="border: 1px solid black"><%= player.injury %></td>
+          <td style="border: 1px solid black"><%= player.status %></td>
+          <td style="border: 1px solid black"><%= player.date %></td>
+        </tr>
+        <% })%>
+      </table>
+    </div>
+    <%}%> <% })%>
+  </div>
+  <%})%>
+</div>
