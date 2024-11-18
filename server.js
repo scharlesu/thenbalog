@@ -8,6 +8,7 @@ const expressLayouts = require("express-ejs-layouts");
 
 const indexRouter = require("./routes/index");
 const injuriesRouter = require("./routes/injuries");
+const depthRouter = require("./routes/depth");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -19,5 +20,6 @@ app.use(express.json());
 
 app.use("/", indexRouter);
 app.use("/injuries", injuriesRouter);
+app.use("/depth", depthRouter);
 
 app.listen(process.env.PORT || 3000);

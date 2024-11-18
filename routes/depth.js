@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
-const { json } = require("stream/consumers");
 
 router.get("/", (req, res) => {
-  let injuryData = fs.readFileSync("../thenbalog/_data/injuries.json");
+  let injuryData = fs.readFileSync("../thenbalog/_data/out_or_d2d.json");
+  let depthData = fs.readFileSync("../thenbalog/_data/depth.json");
   let scoreboardData = {};
   try {
     fetch(process.env.API_URL)
@@ -15,13 +15,14 @@ router.get("/", (req, res) => {
         return response.json();
       })
       .then((data) => {
-        res.render("injuries/index", {
+        res.render("depth/index", {
           injuryData: JSON.parse(injuryData),
           scoreboardData: data,
+          depthData: JSON.parse(depthData),
         });
       });
   } catch {
-    res.render("injuries/index", { errorMessage: "something went wrong" });
+    res.render("depth/index", { errorMessage: "something went wrong" });
   }
 });
 

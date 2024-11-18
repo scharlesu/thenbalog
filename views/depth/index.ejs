@@ -1,0 +1,88 @@
+<div>
+  <h2>Games of <%= scoreboardData.day.date %></h2>
+  <% scoreboardData.events.forEach(game => { %>
+  <div style="background-color: blue; color: white; text-align: center">
+    <h3><%= game.shortName %></h3>
+  </div>
+  <div style="display: flex; text-align: center; justify-content: center">
+    <% depthData.forEach(team => { %> <%if(game.name.includes(team.team)) {%>
+    <div style="padding: 1rem">
+      <h3><%= team.team %></h3>
+      <div>
+        <table style="border: solid">
+          <tr>
+            <th></th>
+            <% for (let i= 1; i< team.depth.pg.length+1; i++){ %>
+            <th><%=i%></th>
+            <%}%>
+          </tr>
+          <tr>
+            <th>PG</th>
+            <% team.depth.pg.forEach(player => { %> <%
+            if(injuryData.out.includes(player)) {%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: red;
+              "
+            >
+              <%= player %>
+            </td>
+            <%}else if(injuryData.d2d.includes(player)){%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: yellow;
+              "
+            >
+              <%= player %>
+            </td>
+            <% }else{%>
+            <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
+              <%= player %>
+            </td>
+            <%}%> <%})%>
+          </tr>
+          <tr>
+            <th>SG</th>
+            <% team.depth.sg.forEach(player => { %>
+            <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
+              <%= player %>
+            </td>
+            <%})%>
+          </tr>
+          <tr>
+            <th>SF</th>
+            <% team.depth.sf.forEach(player => { %>
+            <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
+              <%= player %>
+            </td>
+            <%})%>
+          </tr>
+          <tr>
+            <th>PF</th>
+            <% team.depth.pf.forEach(player => { %>
+            <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
+              <%= player %>
+            </td>
+            <%})%>
+          </tr>
+          <tr>
+            <th>C</th>
+            <% team.depth.c.forEach(player => { %>
+            <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
+              <%= player %>
+            </td>
+            <%})%>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <% } %> <% })%>
+  </div>
+  <% })%>
+</div>
