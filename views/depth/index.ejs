@@ -1,8 +1,11 @@
+<% getTime = function(time) { var timeDate = new Date(time); return (
+timeDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})) } %>
+
 <div>
   <h2>Games of <%= scoreboardData.day.date %></h2>
   <% scoreboardData.events.forEach(game => { %>
   <div style="background-color: blue; color: white; text-align: center">
-    <h3><%= game.shortName %></h3>
+    <h3><%= game.shortName %> <%=getTime(game.date)%></h3>
   </div>
   <div style="display: flex; text-align: center; justify-content: center">
     <% depthData.forEach(team => { %> <%if(game.name.includes(team.team)) {%>
@@ -36,7 +39,7 @@
                 border: solid 0.1rem;
                 width: 10rem;
                 height: 2.5rem;
-                color: yellow;
+                color: darkgoldenrod;
               "
             >
               <%= player %>
@@ -50,34 +53,126 @@
           <tr>
             <th>SG</th>
             <% team.depth.sg.forEach(player => { %>
+            <%if(injuryData.out.includes(player)) {%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: red;
+              "
+            >
+              <%= player %>
+            </td>
+            <%}else if(injuryData.d2d.includes(player)){%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: darkgoldenrod;
+              "
+            >
+              <%= player %>
+            </td>
+            <% }else{%>
             <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
               <%= player %>
             </td>
-            <%})%>
+            <%}%> <%})%>
           </tr>
           <tr>
             <th>SF</th>
             <% team.depth.sf.forEach(player => { %>
+            <%if(injuryData.out.includes(player)) {%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: red;
+              "
+            >
+              <%= player %>
+            </td>
+            <%}else if(injuryData.d2d.includes(player)){%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: darkgoldenrod;
+              "
+            >
+              <%= player %>
+            </td>
+            <% }else{%>
             <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
               <%= player %>
             </td>
-            <%})%>
+            <%}%> <%})%>
           </tr>
           <tr>
             <th>PF</th>
             <% team.depth.pf.forEach(player => { %>
+            <%if(injuryData.out.includes(player)) {%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: red;
+              "
+            >
+              <%= player %>
+            </td>
+            <%}else if(injuryData.d2d.includes(player)){%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: darkgoldenrod;
+              "
+            >
+              <%= player %>
+            </td>
+            <% }else{%>
             <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
               <%= player %>
             </td>
-            <%})%>
+            <%}%> <%})%>
           </tr>
           <tr>
             <th>C</th>
             <% team.depth.c.forEach(player => { %>
+            <%if(injuryData.out.includes(player)) {%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: red;
+              "
+            >
+              <%= player %>
+            </td>
+            <%}else if(injuryData.d2d.includes(player)){%>
+            <td
+              style="
+                border: solid 0.1rem;
+                width: 10rem;
+                height: 2.5rem;
+                color: darkgoldenrod;
+              "
+            >
+              <%= player %>
+            </td>
+            <% }else{%>
             <td style="border: solid 0.1rem; width: 10rem; height: 2.5rem">
               <%= player %>
             </td>
-            <%})%>
+            <%}%> <%})%>
           </tr>
         </table>
       </div>
